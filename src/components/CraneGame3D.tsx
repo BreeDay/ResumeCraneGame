@@ -158,7 +158,7 @@ const ModelViewer = ({ modelPath, prizeName }: { modelPath: string, prizeName: s
         }
       }
     });
-  }, [scene]);
+  }, [scene, prizeName]); // prizeName is included in the dependency array
   
   // Rotate the model
   useFrame(() => {
@@ -937,13 +937,13 @@ const CraneGame3D = () => {
           </div>
           
           <div className={styles.allPrizesMessage}>
-            <h3>You've collected all of Bree Day's resume prizes!</h3>
-            <p>Thank you for playing Bree Day's Resume Crane Game!</p>
-            <p>Would you like to learn more about Bree's skills and experience?</p>
+            <h3>You&apos;ve collected all of Bree Day&apos;s resume prizes!</h3>
+            <p>Thank you for playing Bree Day&apos;s Resume Crane Game!</p>
+            <p>Would you like to learn more about Bree&apos;s skills and experience?</p>
             
             <div className={styles.allPrizesButtons}>
               <button className={styles.visitProfileButton} onClick={handleVisitProfile}>
-                Visit Bree's Profile
+                Visit Bree&apos;s Profile
               </button>
               <button className={styles.playAgainButton} onClick={handleCloseAllPrizesModal}>
                 Play Again
