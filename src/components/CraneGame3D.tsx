@@ -414,7 +414,7 @@ const CraneMachine = ({
   clawPosition, 
   isGrabbing, 
   caughtPrize,
-  isPrizeDropping,
+  // isPrizeDropping,
   droppedPrizePosition,
   droppedPrizeRotation,
   droppedPrizeColor,
@@ -427,7 +427,7 @@ const CraneMachine = ({
   clawPosition: [number, number, number], 
   isGrabbing: boolean, 
   caughtPrize: Prize | null,
-  isPrizeDropping: boolean, // Prop is kept for interface compatibility
+  // isPrizeDropping: boolean, // Prop is kept for interface compatibility
   droppedPrizePosition: [number, number, number],
   droppedPrizeRotation: [number, number, number],
   droppedPrizeColor: string,
@@ -1022,7 +1022,7 @@ const CraneGame3D = () => {
             clawPosition={clawPosition}
             isGrabbing={isGrabbing}
             caughtPrize={caughtPrize}
-            isPrizeDropping={false}
+            // isPrizeDropping={false}
             droppedPrizePosition={[0, 0, 0]}
             droppedPrizeRotation={[0, 0, 0]}
             droppedPrizeColor={"#FF6B6B"}
