@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Arcade decorative elements */
+.gameContainer::before,
+.gameContainer::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(90deg, #ff0055, #ff00a2, #8f00ff, #00b3ff, #00fff0);
+  background-size: 500% 100%;
+  animation: neonGlow 10s linear infinite;
+  z-index: 1;
+}
+
+/* Arcade grid pattern */
+.gameContainer {
+  background-image: 
+    /* Horizontal lines */
+    linear-gradient(0deg, rgba(0, 195, 255, 0.1) 1px, transparent 1px),
+    /* Vertical lines */
+    linear-gradient(90deg, rgba(0, 195, 255, 0.1) 1px, transparent 1px),
+    /* Base gradient */
+    linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background-size: 40px 40px, 40px 40px, 100% 100%;
+}
+
+/* Arcade decorative neon circles */
+.gameContainer::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 0, 157, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(0, 195, 255, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 0, 0.05) 0%, transparent 30%),
+    radial-gradient(circle at 80% 10%, rgba(0, 255, 157, 0.1) 0%, transparent 20%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gameContainer::before {
+  top: 0;
+}
+
+.gameContainer::after {
+  bottom: 0;
+}
+
+@keyframes neonGlow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 500% 0%; }
+}
+
+.gameHeader {
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 0, 157, 0.8), 0 0 20px rgba(255, 0, 157, 0.5);
+  background-color: rgba(10, 10, 30, 0.7);
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid rgba(255, 0, 157, 0.5);
+  box-shadow: 0 0 20px rgba(255, 0, 157, 0.3);
+}
+
+.arcadeTitle {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2rem;
+  margin-top: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffff00;
+  text-shadow: 
+    0 0 10px #ff00ff,
+    0 0 20px #ff00ff,
+    0 0 30px #ff00ff,
+    0 0 40px #ff00ff;
+  animation: textGlow 1.5s infinite alternate;
+  padding: 10px;
+  line-height: 1.4;
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 
+      0 0 10px #ff00ff,
+      0 0 20px #ff00ff,
+      0 0 30px #ff00ff,
+      0 0 40px #ff00ff;
+  }
+  to {
+    text-shadow: 
+      0 0 20px #ff00ff,
+      0 0 30px #ff00ff,
+      0 0 40px #ff00ff,
+      0 0 50px #ff00ff,
+      0 0 60px #ff00ff;
+  }
+}
+
+.gameHeader h1 {
+  font-size: 2.5rem;
+  margin-top: 0;
+  color: #ff6b6b;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gameMessage {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(0, 195, 255, 0.8);
+  font-weight: bold;
+  padding: 10px;
+  background-color: rgba(10, 10, 30, 0.8);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 195, 255, 0.6);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.controls {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
+  color: #ffffff;
+  background-color: rgba(10, 10, 30, 0.8);
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 195, 255, 0.6);
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.viewControls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.viewTip {
+  margin-top: 5px;
+  font-style: italic;
+}
+
+.viewButton {
+  padding: 8px 16px;
+  background-color: rgba(0, 89, 255, 0.2);
+  border: 2px solid rgba(0, 195, 255, 0.6);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  margin-top: 10px;
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(0, 195, 255, 0.8);
+  box-shadow: 0 0 10px rgba(0, 195, 255, 0.3);
+}
+
+.viewButton:hover {
+  background-color: rgba(0, 195, 255, 0.4);
+  box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.viewButton.active {
+  background-color: rgba(0, 255, 157, 0.4);
+  color: white;
+  border-color: rgba(0, 255, 157, 0.8);
+  box-shadow: 0 0 15px rgba(0, 255, 157, 0.5);
+}
+
+.gameCanvas {
+  width: 100%;
+  height: 600px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 195, 255, 0.5), 0 0 50px rgba(0, 89, 255, 0.3);
+  position: relative;
+  z-index: 2;
+  border: 3px solid rgba(0, 195, 255, 0.7);
+}
+
+/* Prize Win Modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modalOverlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modalContent {
+  background: linear-gradient(135deg, #2c3e50, #4a69bd);
+  border-radius: 15px;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+}
+
+.modalOverlay.visible .modalContent {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.modalHeader {
+  margin-bottom: 20px;
+}
+
+.modalHeader h2 {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #ffd700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: pulse 1.5s infinite alternate;
+}
+
+.prizeImage {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 20px;
+  position: relative;
+  animation: float 3s infinite ease-in-out;
+}
+
+.prizeDetails {
+  margin-bottom: 30px;
+}
+
+.prizeDetails h3 {
+  font-size: 1.8rem;
+  margin: 0 0 10px;
+  color: #ff9ff3;
+}
+
+.prizeDetails p {
+  font-size: 1.2rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.closeButton,
+.visitProfileButton,
+.playAgainButton {
+  padding: 10px 20px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.closeButton:hover,
+.visitProfileButton:hover,
+.playAgainButton:hover {
+  background-color: #e64a19;
+}
+
+.visitProfileButton {
+  background-color: #4caf50;
+  margin-right: 15px;
+}
+
+.visitProfileButton:hover {
+  background-color: #388e3c;
+}
+
+.playAgainButton {
+  background-color: #2196f3;
+}
+
+.playAgainButton:hover {
+  background-color: #1976d2;
+}
+
+.allPrizesButtons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.allPrizesMessage {
+  text-align: center;
+  padding: 20px;
+}
+
+.allPrizesMessage h3 {
+  color: #ff5722;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(255, 87, 34, 0.7);
+}
+
+.allPrizesMessage p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: confettiFall 5s linear forwards;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .gameCanvas {
+    height: 400px;
+  }
+  
+  .gameHeader h1 {
+    font-size: 2rem;
+  }
+  
+  .modalContent {
+    padding: 20px;
+  }
+  
+  .modalHeader h2 {
+    font-size: 2rem;
+  }
+  
+  .prizeImage {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .prizeDetails h3 {
+    font-size: 1.5rem;
+  }
+  
+  .prizeDetails p {
+    font-size: 1rem;
+  }
+}
